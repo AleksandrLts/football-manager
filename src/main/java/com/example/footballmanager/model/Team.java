@@ -16,7 +16,7 @@ public class Team {
     private Long id;
     private String name;
     private String country;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Player> players;

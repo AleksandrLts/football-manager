@@ -4,9 +4,11 @@ import com.example.footballmanager.dto.request.TeamRequestDto;
 import com.example.footballmanager.dto.response.TeamResponseDto;
 import com.example.footballmanager.model.Player;
 import com.example.footballmanager.model.Team;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+@Component
 public class TeamMapper implements DtoMapper<TeamRequestDto, TeamResponseDto, Team> {
     @Override
     public Team mapToModel(TeamRequestDto dto) {

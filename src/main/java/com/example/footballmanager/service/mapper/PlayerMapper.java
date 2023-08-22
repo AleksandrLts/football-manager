@@ -3,7 +3,10 @@ package com.example.footballmanager.service.mapper;
 import com.example.footballmanager.dto.request.PlayerRequestDto;
 import com.example.footballmanager.dto.response.PlayerResponseDto;
 import com.example.footballmanager.model.Player;
+import com.example.footballmanager.model.Team;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PlayerMapper implements DtoMapper<PlayerRequestDto, PlayerResponseDto, Player> {
     @Override
     public Player mapToModel(PlayerRequestDto dto) {
@@ -11,7 +14,9 @@ public class PlayerMapper implements DtoMapper<PlayerRequestDto, PlayerResponseD
         player.setFirstName(dto.getFirstName());
         player.setLastName(dto.getLastName());
         player.setDateOfBirth(dto.getDateOfBirth());
-        player.setTeam(dto.getTeam());
+        Team team = new Team();
+        team.setId(dto.getTeamId());
+        player.setTeam(team);
         player.setDateOfStartCareer(dto.getDateOfStartCareer());
         return player;
     }
@@ -24,7 +29,7 @@ public class PlayerMapper implements DtoMapper<PlayerRequestDto, PlayerResponseD
         playerResponseDto.setLastName(model.getLastName());
         playerResponseDto.setDateOfBirth(model.getDateOfBirth());
         playerResponseDto.setDateOfStartCareer(model.getDateOfStartCareer());
-        playerResponseDto.setTeam_id(model.getTeam().getId());
+        playerResponseDto.setTeamId(model.getTeam().getId());
         return playerResponseDto;
     }
 }
